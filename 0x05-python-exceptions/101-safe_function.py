@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 import sys
 
+
 def safe_function(func, *args):
     try:
         result = func(*args)
