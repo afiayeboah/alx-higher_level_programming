@@ -1,8 +1,8 @@
 #!/usr/bin/python3
-    """Defines a re5ctangle with width and height attributes."""
+"""Defines a rectangle with width and height attributes."""
 
 
-    def __init__(self, width=0, height=0):
+   def __init__(self, width=0, height=0):
         """Initializes a rectangle with optional width and height."""
         self.width = width
         self.height = height
