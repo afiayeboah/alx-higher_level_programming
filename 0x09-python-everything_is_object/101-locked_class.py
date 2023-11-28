@@ -3,5 +3,5 @@
 
 
 class LockedClass():
-   """LockedClass with restricted attributes."""
-    __slots__ = ('first_name',)
+    """LockedClass with restricted attributes"""
+    __slots__ = ('first_name')
