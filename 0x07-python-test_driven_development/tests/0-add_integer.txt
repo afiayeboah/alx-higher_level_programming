@@ -1,0 +1,61 @@
+0-add_integer.txt
+=============================
+Integer Addition Function
+----------------------------- `add_integer(a, b=98)` and returns the sum.
+
+Usage
+---------
+```python
+>>> add_integer = __import__('0-add_integer').add_integer
+>>> add_integer(2, 3)
+5
+
+The function works with both integers and floating-point values.
+::
+>>> add_integer(2.0, 3.0)
+5
+
+Note that, Floats are cast to ints before addition.
+::
+>>> add_integer(2.9, 0.2)
+2
+
+Optional second argument (default is 98).
+::
+>>> add_integer(2)
+100
+
+Non-Numbers
+=======================
+Raises TypeError if arguments are not integers or floats.
+>>> add_integer("hello", 3)
+TypeError: a must be an integer
+
+Error message is printed for the first non-integer or non-float argument.
+::
+>>> add_integer("hello", "there")
+TypeError: a must be an integer
+
+Fails with OverflowError if infinity is provided.
+::
+>>> add_integer(float('inf'))
+
+ails with OverflowError if infinity is provided.
+::
+>>> add_integer(float('inf'))
+
+OverflowError: cannot convert float infinity to integer
+::
+>>> add_integer(float('inf'))
+OverflowError: cannot convert float infinity to integer
+
+Fails with ValueError if NaN is provided.
+::
+>>> add_integer(float('nan'))
+ValueError: cannot convert float NaN to integer
+
+
+ >>> add_integer()
+    Traceback (most recent call last):
+    TypeError: add_integer() missing 1 required positional argument: 'a'
+
