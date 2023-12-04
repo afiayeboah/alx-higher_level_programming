@@ -1,125 +1,72 @@
-"""
-The ``7-base_geometry`` module
-=============================
+>>> geometry = __import__('7-base_geometry').BaseGeometry()
 
-Using ``BaseGeometry``
-----------------------
-
-Import class from module:
-    >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
-
-Correct Class Type Test:
-    >>> bg = BaseGeometry()
-    >>> isinstance(bg, BaseGeometry)
-    True
-
-
-`area()` Instance Method
-------------------------
-`area` method is an instance method:
-    >>> callable(getattr(bg, 'area', None))
-    True
-
-Attempt to Call `area` via Class with No Args:
-    >>> BaseGeometry.area(bg)
-    Traceback (most recent call last):
-    TypeError: area() missing 1 required positional argument: 'self'
-
-Attempt to Call `area` with One Argument:
-    >>> bg.area(10)
-    Traceback (most recent call last):
-    TypeError: area() takes 1 positional argument but 2 were given
-
-Attempt to Call `area` Method Normally:
-    >>> bg.area()
-    Traceback (most recent call last):
-    Exception: area() is not implemented
-
-
-`integer_validator()` Instance Method
--------------------------------------
-`integer_validator` is an instance method:
-    >>> callable(getattr(bg, 'integer_validator', None))
-    True
-
-Attempt to Call `integer_validator` via Class with No Args:
-    >>> BaseGeometry.integer_validator(bg)
-    Traceback (most recent call last):
-    TypeError: integer_validator() missing 3 required positional arguments: 'self', 'name', and 'value'
-
-Attempt to Call `integer_validator` with No Arguments:
-    >>> bg.integer_validator()
-    Traceback (most recent call last):
-    TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
-    
-Attempt to Call `integer_validator` with Three Arguments:
-    >>> bg.integer_validator(1, 1, 1)
-    Traceback (most recent call last):
-    TypeError: integer_validator() takes 3 positional arguments but 4 were given
-
-Attempt to Validate Float (0.0) Value:
-    >>> bg.integer_validator("bar", 3.0)
-    Traceback (most recent call last):
-    TypeError: Expected an integer for 'bar', got float
-
-Attempt to Validate Float (3.14) Value:
-    >>> bg.integer_validator("baz", 3.14)
-    Traceback (most recent call last):
-    TypeError: 'baz' must be an integer
-
-Attempt to Validate String Value:
-    >>> bg.integer_validator("qux", "quux")
-    Traceback (most recent call last):
-    TypeError: 'qux' must be an integer
-
-Attempt to Validate Boolean Value:
-    >>> bg.integer_validator("corge", True)
-    Traceback (most recent call last):
-    TypeError: 'corge' must be an integer
-
-Attempt to Validate List Value:
-    >>> bg.integer_validator("grault", [1])
-    Traceback (most recent call last):
-    TypeError: 'grault' must be an integer
-
-Attempt to Validate None Value:
-    >>> bg.integer_validator("garply", None)
-    Traceback (most recent call last):
-    TypeError: 'garply' must be an integer
-
-Attempt to Validate Zero Value:
-    >>> bg.integer_validator("waldo", 0)
-    Traceback (most recent call last):
-    ValueError: 'waldo' must be greater than 0
-
-Attempt to Validate Negative Value:
-    >>> bg.integer_validator("fred", -1000)
-    Traceback (most recent call last):
-    ValueError: 'fred' must be greater than 0
-
-Validation of Valid Integer Value (98):
-    >>> bg.integer_validator("plugh", 98)
-
-Validation of Another Valid Integer Value (1):
-    >>> bg.integer_validator("xyzzy", 1)
-
-Attempt to Validate Empty String:
-    >>> bg.integer_validator("thud", "")
-    Traceback (most recent call last):
-    ValueError: 'thud' must be greater than 0
-
-Attempt to Validate `None` as Name:
-    >>> bg.integer_validator(None, 1)
-    Traceback (most recent call last):
-    ValueError: 'None' must be greater than 0
-
-Attempt to Validate Tuple:
-    >>> bg.integer_validator("quux", (1, 2))
-    Traceback (most recent call last):
-    TypeError: 'quux' must be an integer
-
-Attempt to Validate Dictionary:
-    >>> bg.integer_validator("corge", {1, 2})
-    Traceback (most recent call last):
-    TypeError: 'corge' must be an integer
-"""
+>>> geometry.integer_validator("width", 12)
+>>> geometry.integer_validator("height", 89)
+>>> geometry.integer_validator("name", "John")
+Traceback (most recent call last):
+    ...
+TypeError: name must be an integer
+>>> geometry.integer_validator("value", 5.23)
+Traceback (most recent call last):
+    ...
+TypeError: value must be an integer
+>>> geometry.integer_validator("float_value", float("inf"))
+Traceback (most recent call last):
+    ...
+TypeError: float_value must be an integer
+>>> geometry.integer_validator("neg_value", float("-inf"))
+Traceback (most recent call last):
+    ...
+TypeError: neg_value must be an integer
+>>> geometry.integer_validator("is_integer", True)
+Traceback (most recent call last):
+    ...
+TypeError: is_integer must be an integer
+>>> geometry.integer_validator("positive_int", 0)
+Traceback (most recent call last):
+    ...
+ValueError: positive_int must be greater than 0
+>>> geometry.integer_validator("negative_int", -4)
+Traceback (most recent call last):
+    ...
+ValueError: negative_int must be greater than 0
+>>> geometry.integer_validator("missing_arg")
+Traceback (most recent call last):
+    ...
+TypeError: integer_validator() missing 1 required positional argument: 'value'
+>>> geometry.integer_validator()
+Traceback (most recent call last):
+    ...
+TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
+>>> geometry.integer_validator("nullable_value", None)
+Traceback (most recent call last):
+    ...
+TypeError: nullable_value must be an integer
+>>> geometry.area()
+Traceback (most recent call last):
+    ...
+Exception: area() is not implemented
+>>> geometry.area("aaa")
+Traceback (most recent call last):
+    ...
+TypeError: area() takes 1 positional argument but 2 were given
+>>> geometry.integer_validator("complex_value", 2 + 5j)
+Traceback (most recent call last):
+    ...
+TypeError: complex_value must be an integer
+>>> geometry.integer_validator("list_values", [1, 2])
+Traceback (most recent call last):
+    ...
+TypeError: list_values must be an integer
+>>> geometry.integer_validator("tuple_values", (1, 2))
+Traceback (most recent call last):
+    ...
+TypeError: tuple_values must be an integer
+>>> geometry.integer_validator("dict_values", {"a": 8})
+Traceback (most recent call last):
+    ...
+TypeError: dict_values must be an integer
+>>> geometry.integer_validator("set_values", {2, 8})
+Traceback (most recent call last):
+    ...
+TypeError: set_values must be an integer
