@@ -4,7 +4,8 @@
 
 def append_after(filename="", search_string="", new_string=""):
     """
-    Appends a string after the first occurrence of a specified string in a file.
+    Appends a string after the first occurrence of a
+    specified string in a file.
 
     :param filename: The name of the file.
     :type filename: str
