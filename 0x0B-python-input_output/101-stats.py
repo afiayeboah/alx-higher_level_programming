@@ -27,8 +27,7 @@ if __name__ == "__main__":
 
     accumulated_size = 0
     status_code_counts = {}
-    valid_status_codes =
-    {'200', '301', '400', '401', '403', '404', '405', '500'}
+    valid_status_codes = {'200', '301', '400', '401', '403', '404', '405', '500'}
     line_count = 0
 
     try:
@@ -50,8 +49,7 @@ if __name__ == "__main__":
             try:
                 status_code = parts[-2]
                 if status_code in valid_status_codes:
-                    status_code_counts[status_code] =
-                    status_code_counts.get(status_code, 0) + 1
+                    status_code_counts[status_code] = status_code_counts.get(status_code, 0) + 1
             except IndexError:
                 pass
 
