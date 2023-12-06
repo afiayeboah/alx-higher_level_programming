@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Student Class Definition"""
 
+
 class Student:
     """Represents an individual student."""
 
@@ -23,9 +24,11 @@ class Student:
         :param attrs: A list of attribute names to include in the dictionary.
         :type attrs: list
 
-        :return: A dictionary containing the specified attributes or all attributes if not provided.
+        :return: A dictionary containing the specified attributes
+        or all attributes if not provided.
         :rtype: dict
         """
-        if isinstance(attrs, list) and all(isinstance(ele, str) for ele in attrs):
+        if isinstance(attrs, list) and all(isinstance(ele, str)
+                                           for ele in attrs):
             return {k: getattr(self, k) for k in attrs if hasattr(self, k)}
         return self.__dict__
