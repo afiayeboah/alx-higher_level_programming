@@ -6,17 +6,17 @@ import unittest
 from models.square import Square
 
 
-class TestSquareInitialization(unittest.TestCase):
+class TestSquare(unittest.TestCase):
     """Define unit tests for Square model initialization"""
 
-    def test_successfully_initialize_square(self):
+    def test_initialization_success(self):
         """Test successful initialization of Square instances"""
         square1 = Square(5)
         square2 = Square(10)
         self.assertEqual(square1.id, 5)
         self.assertEqual(square2.id, 6)
 
-    def test_initialize_square_without_arguments_raises_error(self):
+    def test_initialization_without_arguments(self):
         """Test that initializing Square without arguments raises TypeError"""
         self.assertRaises(TypeError, Square)
 
