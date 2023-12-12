@@ -24,6 +24,7 @@ class Base:
         else:
             Base.__nb_objects += 1
             self.id = Base.__nb_objects
+
     @staticmethod
     def to_json_string(dictionary_list):
         """Converts a list of dictionaries to a JSON-formatted string.
@@ -135,7 +136,8 @@ class Base:
             with open(filename, "r", newline="") as csv_file:
                 fieldnames = cls.get_fieldnames()
                 dict_reader = csv.DictReader(csv_file, fieldnames=fieldnames)
-                dict_list = [cls.convert_dict_values(data) for data in dict_reader]
+                list_dicts = [dict([k, int(v)] for k, v in d.items())
+                              for d in list_dicts]
                 return [cls.create(**data) for data in dict_list]
         except FileNotFoundError:
             return []
