@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """
-Defines the Base class for handling object serialization, deserialization,
-and drawing shapes using the turtle module.
+Defines the Base class for handling object  using the turtle module.
 """
 import json
 import csv
@@ -25,10 +24,9 @@ class Base:
         else:
             Base.__nb_objects += 1
             self.id = Base.__nb_objects
-@staticmethod
+    @staticmethod
     def to_json_string(dictionary_list):
-        """
-        Converts a list of dictionaries to a JSON-formatted string.
+        """Converts a list of dictionaries to a JSON-formatted string.
 
         Args:
             dictionary_list (list): List of dictionaries.
@@ -116,7 +114,10 @@ class Base:
             if not object_list:
                 csv_file.write("[]")
             else:
-                fieldnames = cls.get_fieldnames()
+                if cls.__name__ == "Rectangle":
+                    fieldnames = ["id", "width", "height", "x", "y"]
+                else:
+                    fieldnames = ["id", "size", "x", "y"]
                 writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
                 for obj in object_list:
                     writer.writerow(obj.to_dict())

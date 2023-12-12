@@ -77,12 +77,13 @@ class Rectangle(Base):
 
     def _validate_attribute(self, attribute, value):
         """Generic attribute validation"""
-        if not isinstance(value, int) or isinstance(value, bool):
-            raise TypeError(f"{attribute} must be an integer")
-        if attribute in ["x", "y"] and value < 0:
-            raise ValueError(f"{attribute} must be >= 0")
+        if type(value) != int:
+            raise TypeError("{} must be an integer".format(attribute))
+        if attribute == "x" or attribute == "y":
+            if value < 0:
+                raise ValueError("{} must be >= 0".format(attribute))
         elif value <= 0:
-            raise ValueError(f"{attribute} must be > 0")
+            raise ValueError("{} must be > 0".format(attribute))
 
     def update(self, *args, **kwargs):
         """Assign arguments to attributes based on their positions."""
