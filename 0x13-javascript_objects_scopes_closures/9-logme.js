@@ -1,6 +1,9 @@
 #!/usr/bin/node
-const logMe = require('./9-logme').logMe;
 
-logMe("Hello");
-logMe("Best");
-logMe("School")
+exports.logMe = function (item) {
+  if (typeof this.count === 'undefined') {
+    this.count = 0;
+  }
+  console.log(this.count + ': ' + item);
+  this.count++;
+};
