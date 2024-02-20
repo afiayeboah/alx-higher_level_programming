@@ -1,6 +1,7 @@
 #!/usr/bin/python3
-
-""" Write a script that lists all State objects """
+""" Script that lists all State objects that contain
+the letter a from the database
+"""
 
 import sys
 from sqlalchemy import (create_engine)
@@ -9,9 +10,7 @@ from model_state import Base, State
 
 
 if __name__ == "__main__":
-    username = sys.argv[1]
-    password = sys.argv[2]
-    database = sys.argv[3]
+    username, password, database = argv[1], argv[2], argv[3]
 
     engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'
                            .format(username, password, database),
@@ -20,11 +19,10 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    first_state = session.query(State).order_by(State.id).first()
+    states_with_a = session.query(State).filter(State.name.like('%a%'))\
+                                         .order_by(State.id).all()
 
-    if first_state is None:
-        print("Nothing")
-    else:
-        print("{}: {}".format(first_state.id, first_state.name))
+    for state in states_with_a:
+        print("{}: {}".format(state.id, state.name))
 
     session.close()
