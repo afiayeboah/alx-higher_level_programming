@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
-"""Script to list all State and corresponding City objects in the database."""
+""" Script to list all State and corresponding
+City objects in the database """
 import sys
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
