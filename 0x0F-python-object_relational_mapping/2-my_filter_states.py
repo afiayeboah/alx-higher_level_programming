@@ -10,7 +10,8 @@ import sys
 
 if __name__ == "__main__":
     if len(sys.argv) != 5:
-        print("Usage: {} <username> <password> <database> <state_name>".format(sys.argv[0]))
+        print("Usage: {} <username> <password> <database> <state_name>"
+              .format(sys.argv[0]))
         sys.exit(1)
 
     db = MySQLdb.connect(host="localhost",
@@ -22,7 +23,7 @@ if __name__ == "__main__":
     c = db.cursor()
 
     c.execute("SELECT * FROM states WHERE name LIKE BINARY '{}'"
-                .format(sys.argv[4]))
+              .format(sys.argv[4]))
 
     rows = c.fetchall()
 
