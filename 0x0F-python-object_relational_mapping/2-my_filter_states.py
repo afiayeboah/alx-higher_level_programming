@@ -1,11 +1,17 @@
 #!/usr/bin/python3
-""" Script that displays all values in the states
-table where name matches the argument """
+"""
+Script that connects to a MySQL database and displays all values
+in the states table where name matches the argument
+provided as a command-line argument.
+"""
+
 import MySQLdb
 import sys
 
-
-if __name__ == "__main__"
+if __name__ == "__main__":
+    if len(sys.argv) != 5:
+        print("Usage: {} <username> <password> <database> <state_name>".format(sys.argv[0]))
+        sys.exit(1)
 
     db = MySQLdb.connect(host="localhost",
                          user=sys.argv[1],
@@ -21,7 +27,4 @@ if __name__ == "__main__"
     rows = c.fetchall()
 
     for row in rows:
-        print (row)
-
-    c.close()
-    db.close()
+        print(row)
