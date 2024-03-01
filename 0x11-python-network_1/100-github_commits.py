@@ -23,4 +23,3 @@ if __name__ == "__main__":
             print(f"{sha}: {author_name}")
     else:
         print(f"Error: {response.status_code}")
-
